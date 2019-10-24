@@ -7,10 +7,11 @@
 //
 
 #import "UCWebViewController.h"
+#import <WebKit/WebKit.h>
 
-@interface UCWebViewController () <UIWebViewDelegate>
+@interface UCWebViewController () <WKNavigationDelegate>
 @property (nonatomic, copy) void (^cancelBlock)();
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) NSURL *url;
 @end
 
@@ -27,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.webView = [[UIWebView alloc] init];
+    self.webView = [[WKWebView alloc] init];
     [self.view addSubview:self.webView];
     
     NSDictionary *views = @{@"webView":self.webView};
